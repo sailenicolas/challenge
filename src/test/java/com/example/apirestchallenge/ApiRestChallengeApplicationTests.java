@@ -1,0 +1,16 @@
+package com.example.apirestchallenge;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
+
+@SpringBootTest
+@ActiveProfiles("dev")
+class ApiRestChallengeApplicationTests {
+
+    @Test
+    void contextLoads() {
+
+    }
+
+}

@@ -1,0 +1,69 @@
+spring:
+  profiles:
+    active: production
+---
+debug: false
+spring:
+  config:
+    activate:
+      on-profile: dev
+    name: dev
+  jpa:
+      properties:
+        hibernate:
+          jdbc:
+            lob:
+              non_contextual_creation: true
+          format_sql: true
+      show-sql: false
+      open-in-view: true
+      hibernate:
+        ddl-auto: create
+  sql:
+    init:
+      mode: always
+logging:
+  level:
+    sql: info
+    web: info
+server:
+  port: ${PORT:8080}
+---
+debug: false
+
+spring:
+  mvc:
+    pathMatch:
+      matching-strategy: ant-path-matcher
+  config:
+    activate:
+      on-profile: production
+    name: production
+  datasource:
+    url: ${DB_URL}
+    username: ${USER}
+    password: ${PASSWORD}
+  jpa:
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+        dialect: ${DB_DIALECT}
+        format_sql: true
+    show-sql: false
+    open-in-view: true
+    hibernate:
+      ddl-auto: create
+  sql:
+    init:
+      mode: always
+  jackson:
+    mapper:
+      default-view-inclusion: true
+server:
+  port: ${PORT:8080}
+logging:
+  level:
+    sql: info
+    web: info
